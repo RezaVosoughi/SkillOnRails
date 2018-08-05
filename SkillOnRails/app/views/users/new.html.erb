@@ -1,0 +1,17 @@
+<% provide(:title, "Register") %>
+<h1>Register</h1>
+
+<p id="notice"><%= notice %></p>
+
+    <%= form_for(:user, url: signup_path) do |f| %>
+
+      <%= f.label :username %>
+      <%= f.text_field :username, class: 'form-control' %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'form-control' %>
+
+      <%= f.submit "Register", class: "btn btn-primary" %>
+    <% end %>
+
+    <p>Have an account? <%= link_to "Login!", login_path %></p>

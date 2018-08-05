@@ -1,0 +1,36 @@
+<h1>People Search</h1>
+<%= link_to "Back To Home", "/overview", class: "button" %>
+
+
+<%= form_tag people_path, :method => 'get'  do %>
+   <%= text_field_tag :name, params[:name], class: 'form-control col-5', :required => true %>
+   <%= submit_tag("Search", class: "button col-5") %>
+ <% end %>
+
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <% @people.each_with_index do |person, i| %>
+        <tr>
+          <td class="col-8">
+            <%= i+1 %>
+            <%= person["lastname"] %>  
+            <%= person["firstname"] %>
+        </td>
+        <td class="col-4">
+            <%= link_to "Details", person_path(person["id"]), class:"button"%>
+          </td>
+          </tr>  
+      <% end %>
+     
+		
+  </tbody>
+</table>
+

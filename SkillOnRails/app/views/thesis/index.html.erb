@@ -1,0 +1,35 @@
+<h1>Thesis Search</h1>
+<%= link_to "Back To Home", "/overview", class: "button" %>
+
+
+<%= form_tag @theses_path, :method => 'get'  do %>
+  <%= text_field_tag :name, params[:name], class: 'form-control col-5', :required => true %>
+  <%= submit_tag("Search", class: "button col-5") %>
+ <% end %>
+
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <% @theses.each_with_index do |person, i| %>
+        <tr>
+        <td class="col-8">
+
+            <p><%= i+1 %>. <%= person["title"] %></p>
+          </td>
+          <td class="col-4">
+          <%= link_to "Details", (person["detail_url"]), class:"button" %>
+          </td>
+      </tr> 
+      <% end %>
+      
+		
+  </tbody>
+</table>
+

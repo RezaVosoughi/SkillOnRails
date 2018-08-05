@@ -1,0 +1,31 @@
+<h1>Favorites</h1>
+<%= link_to "Back To Home", "/overview", class: "button" %>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <% @people.each_with_index do |person, i| %>
+        <tr>
+          <td class="col-4">
+			<%= i+1 %>.
+            <%= person["lastname"] %> 
+      <%= person["firstname"] %>
+      </td>
+      <td>
+      <%= link_to "Details", person_path(person["id"]), class:"button col-4"%>
+      </td>
+      <td>
+			<%= link_to "Remove", remove_from_favorites_path(:person_id => person["id"]), :method => :post, class:"button col-4" %>
+        </td>
+        </tr>   
+      <% end %>
+     
+		
+  </tbody>
+</table>
+
